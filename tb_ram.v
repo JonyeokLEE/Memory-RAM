@@ -6,12 +6,12 @@ module tb_ram;
 	reg [31:0] tb_din;
 	wire [31:0] tb_dout;
 	
-	ram test_ram(.clk(tb_clk), .cen(tb_cen), .wen(tb_wen), .addr(tb_addr), .din(tb_din), .dout(tb_dout));
+	ram test_ram(.clk(tb_clk), .cen(tb_cen), .wen(tb_wen), .addr(tb_addr), .din(tb_din), .dout(tb_dout)); //run module
 	
 	always
 	begin
 		#5; tb_clk = ~tb_clk;
-	end
+	end //set clk period
 	
 	initial
 	begin
@@ -34,8 +34,8 @@ module tb_ram;
 		#10; tb_addr=5'd16; tb_din=32'd16;
 		#10; tb_addr=5'd17; tb_din=32'd17;
 		#10; tb_addr=5'd18; tb_din=32'd18;
-		#10; tb_addr=5'd33; tb_din=32'd33; //wrong memory
-		#10; tb_wen = 0; tb_addr= 5'd0;
+		#10; tb_addr=5'd32; tb_din=32'd32; //wrong memory
+		#10; tb_wen = 0; tb_addr= 5'd0; tb_din=32'd0;
 		#10; tb_addr=5'd1;
 		#10; tb_addr=5'd2;
 		#10; tb_addr=5'd3;
@@ -63,7 +63,7 @@ module tb_ram;
 		#10; tb_addr=5'd12;
 		#10; $finish;
 		#10;
-	end
+	end //end test
 	
 	
 endmodule
